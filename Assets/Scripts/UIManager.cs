@@ -20,5 +20,4 @@ public class UIManager : MonoBehaviour
         // assign new text here
         _coinText.text = "Coins: " + coins.ToString(); 
     }
-
 }

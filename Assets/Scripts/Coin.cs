@@ -16,10 +16,12 @@ public class Coin : MonoBehaviour
         if (other.tag == "Player")
         {
             Player player = other.GetComponent<Player>();
+
             if (player != null)
             {
                 player.AddCoins();
             }
+            
             Destroy(this.gameObject);
         }
     }

@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
         // _controller.Move(direction * Time.deltaTime);
     }
 
+
     public void AddCoins()
     {
         _coins += 1;
