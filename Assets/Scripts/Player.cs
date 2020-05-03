@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour
@@ -12,10 +13,13 @@ public class Player : MonoBehaviour
     private float _yVelocity; // nn var to cache Y velocity
     private bool _canDoubleJump;
 
-
     // ** var for player coins
     [SerializeField] private int _coins = 0;
     private UIManager _uiManager;
+
+    // ** var for lives
+    [SerializeField] private int _lives = 3;
+    [SerializeField] private GameObject _deathPlatform;
 
 
     void Start()
@@ -27,6 +31,8 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("UI manager is NULL");
         }
+
+        _uiManager.UpdateLivesDisplay(_lives);
     }
 
     void Update()
@@ -81,5 +87,20 @@ public class Player : MonoBehaviour
     {
         _coins += 1;
         _uiManager.UpdateCoinDisplay(_coins);
+    }
+
+
+    public void Damage()
+    {
+        _lives--;
+
+        if (_lives < 1)
+        {
+            Destroy(this.gameObject);
+            SceneManager.LoadScene(0);
+        }
+
+        // update UI display
+        _uiManager.UpdateLivesDisplay(_lives); 
     }
 }
