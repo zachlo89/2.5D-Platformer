@@ -17,7 +17,22 @@ public class DeathPlatform : MonoBehaviour
                 player.Damage();
             }
 
+            CharacterController cc = other.GetComponent<CharacterController>();
+
+            if (cc != null)
+            {
+                cc.enabled = false;
+            }
+
             other.transform.position = _playerStartPos.transform.position;
+
+            StartCoroutine(CCEnableRoutine(cc));
         }
+    }
+
+    IEnumerator CCEnableRoutine(CharacterController controller)
+    {
+        yield return new WaitForSeconds(2.0f);
+        controller.enabled = true;
     }
 }

@@ -82,25 +82,22 @@ public class Player : MonoBehaviour
         // _controller.Move(direction * Time.deltaTime);
     }
 
-
     public void AddCoins()
     {
         _coins += 1;
         _uiManager.UpdateCoinDisplay(_coins);
     }
 
-
     public void Damage()
     {
         _lives--;
+        // update UI display
+        _uiManager.UpdateLivesDisplay(_lives);
 
         if (_lives < 1)
         {
             Destroy(this.gameObject);
             SceneManager.LoadScene(0);
         }
-
-        // update UI display
-        _uiManager.UpdateLivesDisplay(_lives); 
     }
 }

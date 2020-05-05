@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text _coinText, _livesText;
     private int _defaultScore = 0;
-    private int _defaultLives = 0;
+    private int _defaultLives = 3;
 
 
     void Start() 
